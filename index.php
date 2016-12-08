@@ -17,3 +17,22 @@ if(file_exists('.env')) {
     error_log(file_get_contents('php://input'));
     $telegram = new Api();
 }
+
+$update = $telegram->getWebhookUpdates();
+if($update->has('message')) {
+    $message = $update->getMessage();
+    if($message->has('text')) {
+        switch($text = $message->getText()) {
+            case '/about':
+                $telegram->sendMessage([
+                    'chat_id' => $message->getChat()->getId(),
+                    'text' => 'Sobre alguma coisa',
+                    'reply_to_message_id' => $message->getMessageId()
+                ]);
+                break;
+            case '/start':
+            case (preg_match('/^\/start (?<token>[a-f0-9]{32})/', $text, $matches) ? true : false):
+                break;
+        }
+    }
+}
