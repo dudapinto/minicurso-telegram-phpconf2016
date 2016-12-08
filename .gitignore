@@ -1,0 +1,9 @@
+# .evn
+.env
+
+# composer dir and files
+vendor
+composer.phar
+
+# VI
+*.swp

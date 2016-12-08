@@ -1,0 +1,6 @@
+{
+    "require": {
+        "vlucas/phpdotenv": "^2.4",
+        "irazasyed/telegram-bot-sdk": "dev-master"
+    }
+}
